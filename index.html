@@ -2,9 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <title>Circle animation</title>
+    <style>   
+        #body{
+            display: inline-block;
+        }
+        .box{
+            height: 700px;
+            width: 700px;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #000000;
+            transform: translate3d(0 ,0 , 100px);
+            position:relative
+        }
+        .outer_circle { 
+            position: relative; 
+            display: inline-block;
+            margin: 200px; 
+            width: 300px; 
+            height: 300px; 
+            border-radius: 50%; 
+            background-color: #000000 ;
+        } 
+        .inner_circle { 
+            margin: 150px;
+            background-image: linear-gradient(-90deg, #fb5dad 0%, #55fb9f 47%, #b97aff 100%);;
+            border-radius: 230px;
+            display: inline-block;
+            height: 400px;
+            width: 400px;
+            position:absolute;
+            animation: rotation 1s infinite linear;
+        } 
+        #circle:after {
+            content: "";
+            position: absolute;
+            background-image: inherit;
+            border-radius: inherit;
+            width: inherit;
+            height: inherit;
+            transform: translate(0px, 0px) scale(1.2);
+            z-index: -1;
+            filter: blur(70px);
+        }
+        @keyframes rotation {
+            from {
+            transform: rotate(0deg);
+            }
+            to {
+            transform: rotate(359deg);
+            }
+        }
+        .hover_circle { 
+            position: absolute; 
+            display: inline-block;
+            margin: 140px; 
+            width: 20px; 
+            height: 20px; 
+            border-radius: 50%; 
+            background-color: #050210 ;
+            filter: brightness(2);
+            animation: rotation 1s, hover 1s infinite linear;
+        } 
+        @keyframes hover {
+            from {
+            transform: scale(0, 0);
+            }
+            to {
+            transform: scale(15, 15);
+            }
+        }
+    </style> 
+</head> 
+  
+<body> 
+    <div class="box">
+        <div class="inner_circle" id="circle"></div>
+        <div class="outer_circle"> 
+            <div class="hover_circle"> </div>
+        </div>
+
+    </div>
+
+
+</body> 
 </html>
